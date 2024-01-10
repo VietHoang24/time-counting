@@ -13,10 +13,13 @@
 }
 .countdown_input button {
   font-weight: 600;
+  background-color: #b63354;
+  color: white;
 }
 .countdown_input button:focus,
 button:focus-visible {
   outline: none;
+  border: none;
 }
 
 .countdown_input input:focus-visible {

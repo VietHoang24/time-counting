@@ -76,6 +76,7 @@ button:focus-visible {
   letter-spacing: 8px;
   text-transform: uppercase;
   padding-bottom: 1rem;
+  color: #ffcdda;
 }
 ::-webkit-scrollbar {
   width: 6px;

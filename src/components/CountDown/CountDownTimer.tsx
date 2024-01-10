@@ -8,7 +8,11 @@ const CountDownTimer = () => {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-
+  const [isSubmited, setIsSubmited] = useState(false);
+  const handleCountdownFinish = () => {
+    setIsSubmited(false);
+    alert("Countdown finished!");
+  };
   useEffect(() => {
     const countdownInterval = setInterval(() => {
       if (seconds > 0) {
@@ -25,8 +29,12 @@ const CountDownTimer = () => {
           }
         }
       }
+      if (hours === 0 && minutes === 0 && seconds === 0 && isSubmited) {
+        handleCountdownFinish();
+        clearInterval(countdownInterval)
+      }
     }, 1000);
-
+  
     return () => clearInterval(countdownInterval);
   }, [seconds, minutes, hours]);
 
@@ -45,7 +53,7 @@ const CountDownTimer = () => {
       setSeconds(0);
       return; // Exit the function early
     }
-
+    setIsSubmited(true);
     setHours(Math.floor(initialSeconds / 3600));
     setMinutes(Math.floor((initialSeconds % 3600) / 60));
     setSeconds(initialSeconds % 60);
